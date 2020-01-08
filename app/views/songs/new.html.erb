@@ -1,0 +1,35 @@
+<h1>Songs#new</h1>
+<p>Find me in app/views/songs/new.html.erb</p>
+
+<h2>Create an Song</h2>
+
+<%= form_tag("/songs") do %>
+  <% if @song.errors.any? %>
+    <div id="error_explanation">
+      <h2>There were some errors:</h2>
+      <ul>
+        <% @song.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+ 
+  <div class="field<%= ' field_with_errors' if @song.errors[:name].any? %>">
+    <%= label_tag "name", "Name" %>
+    <%= text_field_tag "name", @song.name %>
+  </div>
+ 
+  <div class="field<%= ' field_with_errors' if @song.errors[:email].any? %>">
+    <%= label_tag "email", "Email" %>
+    <%= text_field_tag "email", @song.email %>
+  </div>
+  
+  <div class="field<%= ' field_with_errors' if @song.errors[:phone_number].any? %>">
+  <%= label_tag "phone_number", "Phone Number" %>
+  <%= text_field_tag "phone_number", @song.phone_number %>
+</div>
+  
+  <%= submit_tag "Create" %>
+<% end %>
